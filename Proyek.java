@@ -1,5 +1,5 @@
-import java.util.Date;
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Proyek {
     public String idProyek;
@@ -7,6 +7,7 @@ public class Proyek {
     public String lokasi;
     public int anggaran;
     public String status;
+    private List<Material> materials; 
 
     public Proyek(String idProyek, String namaProyek, String lokasi, int anggaran, String status) {
         this.idProyek = idProyek;
@@ -14,6 +15,7 @@ public class Proyek {
         this.lokasi = lokasi;
         this.anggaran = anggaran;
         this.status = status;
+        this.materials = new ArrayList<>();
     }
 
     public String getNamaProyek() {
@@ -28,8 +30,6 @@ public class Proyek {
         return anggaran;
     }
 
-    //public abstract void changeStatus(String status) ;
-
     public int totalBudget() {
         return anggaran;
     }
@@ -42,8 +42,16 @@ public class Proyek {
         return status;
     }
 
+    public void addMaterial(Material material) {
+        materials.add(material);
+    }
+
     public void displayProject() {
         System.out.println("Proyek: " + namaProyek + ", Lokasi: " + lokasi + ", Anggaran: " + anggaran + ", Status: " + status);
+        System.out.println("Daftar Material:");
+        for (Material material : materials) {
+            material.displayMaterial();
+        }
     }
 
     public String getIdProyek() {
